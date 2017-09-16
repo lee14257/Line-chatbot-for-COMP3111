@@ -63,11 +63,37 @@ public class KitchenSinkTester {
 	}
 	
 	@Test
-	public void testFound() throws Exception {
+	public void testFound1() throws Exception {
 		boolean thrown = false;
 		String result = null;
 		try {
 			result = this.databaseEngine.search("abc");
+		} catch (Exception e) {
+			thrown = true;
+		}
+		assertThat(!thrown);
+		assertThat(result.equals("def"));
+	}
+
+	@Test
+	public void testFound2() throws Exception {
+		boolean thrown = false;
+		String result = null;
+		try {
+			result = this.databaseEngine.search("Who is Prof Kim");
+		} catch (Exception e) {
+			thrown = true;
+		}
+		assertThat(!thrown);
+		assertThat(result.equals("Well, this is your instructor."));
+	}
+
+	@Test
+	public void testFound3() throws Exception {
+		boolean thrown = false;
+		String result = null;
+		try {
+			result = this.databaseEngine.search("Do you know what comes after abc");
 		} catch (Exception e) {
 			thrown = true;
 		}
