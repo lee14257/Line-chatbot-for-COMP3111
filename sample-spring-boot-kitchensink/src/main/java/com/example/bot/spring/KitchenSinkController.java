@@ -259,15 +259,18 @@ public class KitchenSinkController {
 
             default:
             	String reply = null;
+            	int number =0;
             	try {
             		reply = database.search(text);
+            		number = database.searchNumber();
             	} catch (Exception e) {
             		reply = text;
+            		number = 0;
             	}
                 log.info("Returns echo message {}: {}", replyToken, reply);
                 this.replyText(
                         replyToken,
-                        itscLOGIN + " says " + reply
+                        itscLOGIN + " says " + reply + " number pressed is " + number
                 );
                 break;
         }
